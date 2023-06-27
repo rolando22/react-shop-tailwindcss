@@ -3,7 +3,7 @@ import './App.css'
 export function App() {
     return (
         <>
-            <div>Hola Mundo</div>
+            <div className='bg-green-800'>Hola Mundo</div>
         </>
     );
 }
