@@ -9,7 +9,7 @@ import {
     Signin 
 } from './../';
 
-import { Navbar } from './../../Components'
+import { Layout, Navbar } from './../../Components'
 
 import './App.css';
 
@@ -29,8 +29,10 @@ const AppRoutes = () => {
 export function App() {
     return (
         <BrowserRouter>
-            <AppRoutes />
             <Navbar />
+            <Layout>
+                <AppRoutes />
+            </Layout>
         </BrowserRouter>
     );
 }
