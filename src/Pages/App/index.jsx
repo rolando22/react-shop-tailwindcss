@@ -1,4 +1,4 @@
-import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { BrowserRouter, useRoutes } from 'react-router-dom';
 
 import { 
     Home, 
@@ -9,7 +9,9 @@ import {
     Signin 
 } from './../';
 
-import { Layout, Navbar } from './../../Components'
+import { Layout, Navbar } from './../../Components';
+
+import { CartContextProvider } from '../../Context';
 
 import './App.css';
 
@@ -28,11 +30,13 @@ const AppRoutes = () => {
 
 export function App() {
     return (
-        <BrowserRouter>
-            <Navbar />
-            <Layout>
-                <AppRoutes />
-            </Layout>
-        </BrowserRouter>
+        <CartContextProvider>
+            <BrowserRouter>
+                <Navbar />
+                <Layout>
+                    <AppRoutes />
+                </Layout>
+            </BrowserRouter>
+        </CartContextProvider>
     );
 }

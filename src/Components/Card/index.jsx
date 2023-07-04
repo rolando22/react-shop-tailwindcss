@@ -1,6 +1,12 @@
+import { useCartContext } from "../../Hook/useCartContext";
+
 export function Card({ title, price, image, categoryName }) {
+    const { incrementCount } = useCartContext();
+    
+    const handleOnClick = () => incrementCount();
+
     return (
-        <article className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
+        <article className='bg-white w-56 h-60 rounded-lg'>
             <figure className='relative mb-2 w-full h-4/5'>
                 <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>
                     {categoryName}
@@ -10,7 +16,10 @@ export function Card({ title, price, image, categoryName }) {
                     src={image} 
                     alt={title} 
                 />
-                <button className='absolute top-0 right-0 grid place-content-center bg-white w-6 h-6 rounded-lg m-2 p-1'>
+                <button 
+                    className='absolute top-0 right-0 grid place-content-center bg-white w-6 h-6 rounded-lg m-2 p-1'
+                    onClick={handleOnClick}
+                >
                     +
                 </button>
             </figure>
