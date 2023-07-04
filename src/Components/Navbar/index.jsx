@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 
 import { useCartContext } from "../../Hook/useCartContext";
 
+import { ShoppingCartIcon } from "@heroicons/react/24/solid";
+
 const menu1 = [
     { id: 0, to: '/', text: 'Shopi', class: 'font-semibold text-lg' }, 
     { id: 1, to: '/', text: 'All', class: '' }, 
@@ -17,7 +19,6 @@ const menu2 = [
     { id: 1, to: '/my-orders', text: 'My Orders', class: '' }, 
     { id: 2, to: '/my-account', text: 'My Account', class: '' }, 
     { id: 3, to: '/signin', text: 'Sign In', class: '' }, 
-    { id: 4, to: '', text: '🛒', class: '' }, 
 ]
 
 export function Navbar() {
@@ -40,8 +41,12 @@ export function Navbar() {
                 {menu2.map(item => 
                     item.to !== ''
                         ? <li key={item.id}><NavLink to={item.to} className={item.class || active}>{item.text}</NavLink></li>
-                        : <li key={item.id} className={item.class}>{item.text} {item.text === '🛒' ? count : ''}</li>
+                        : <li key={item.id} className={item.class}>{item.text}</li>
                 )}
+                <li className='flex items-center gap-0.5'>
+                    <ShoppingCartIcon className='h-5 w-5 text-black'/> 
+                    <span>{count}</span>
+                </li>
             </ul>
         </nav>
     );

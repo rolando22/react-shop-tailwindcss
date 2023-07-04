@@ -1,5 +1,7 @@
 import { useCartContext } from "../../Hook/useCartContext";
 
+import { PlusSmallIcon } from "@heroicons/react/24/solid";
+
 export function Card({ title, price, image, categoryName }) {
     const { incrementCount } = useCartContext();
     
@@ -20,7 +22,7 @@ export function Card({ title, price, image, categoryName }) {
                     className='absolute top-0 right-0 grid place-content-center bg-white w-6 h-6 rounded-lg m-2 p-1'
                     onClick={handleOnClick}
                 >
-                    +
+                    <PlusSmallIcon className='h-4 w-4 text-black' />
                 </button>
             </figure>
             <p className='flex justify-between'>
