@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Card } from './../../Components';
+import { Card, ProductDetail } from './../../Components';
 
 export function Home() {
     const [products, setProducts] = useState([]);
@@ -30,6 +30,7 @@ export function Home() {
                     />
                 )}
             </section>
+            <ProductDetail />
         </>
     );
 }
