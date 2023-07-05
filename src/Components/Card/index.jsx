@@ -2,10 +2,14 @@ import { useCartContext } from "../../Hook/useCartContext";
 
 import { PlusSmallIcon } from "@heroicons/react/24/solid";
 
-export function Card({ title, price, image, categoryName }) {
-    const { incrementCount } = useCartContext();
+export function Card({ title, price, image, categoryName, description, openProductDetail }) {
+    const { incrementCount, setProductToShow } = useCartContext();
     
-    const handleOnClick = () => incrementCount();
+    const handleOnClickIncrement = () => incrementCount();
+    const handleOneClickOpenDetail = () => {
+        setProductToShow({ title, price, image, description });
+        openProductDetail();
+    }
 
     return (
         <article className='bg-white w-56 h-60 rounded-lg'>
@@ -14,13 +18,14 @@ export function Card({ title, price, image, categoryName }) {
                     {categoryName}
                 </span>
                 <img 
-                    className='w-full h-full object-cover rounded-lg'
+                    className='w-full h-full object-cover rounded-lg cursor-pointer'
                     src={image} 
                     alt={title} 
+                    onClick={handleOneClickOpenDetail}
                 />
                 <button 
                     className='absolute top-0 right-0 grid place-content-center bg-white w-6 h-6 rounded-lg m-2 p-1'
-                    onClick={handleOnClick}
+                    onClick={handleOnClickIncrement}
                 >
                     <PlusSmallIcon className='h-4 w-4 text-black' />
                 </button>

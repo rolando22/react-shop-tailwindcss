@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 
 import { Card, ProductDetail } from './../../Components';
 
+import { useCartContext } from '../../Hook/useCartContext';
+
 export function Home() {
     const [products, setProducts] = useState([]);
+    const { isProductDetailOpen, openProductDetail } = useCartContext();
 
     useEffect(() => {
         (async () => {
@@ -27,10 +30,12 @@ export function Home() {
                         price={product.price}
                         image={product.images[0]}
                         categoryName={product.category.name}
+                        description= {product.description}
+                        openProductDetail={openProductDetail}
                     />
                 )}
             </section>
-            <ProductDetail />
+            {isProductDetailOpen && <ProductDetail />}
         </>
     );
 }
