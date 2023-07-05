@@ -22,7 +22,7 @@ const menu2 = [
 ]
 
 export function Navbar() {
-    const { count } = useCartContext();
+    const { cartQuantity } = useCartContext();
 
     const activeStyle = 'underline underline-offset-4';
 
@@ -45,7 +45,7 @@ export function Navbar() {
                 )}
                 <li className='flex items-center gap-0.5'>
                     <ShoppingCartIcon className='h-5 w-5 text-black'/> 
-                    <span>{count}</span>
+                    <span>{cartQuantity}</span>
                 </li>
             </ul>
         </nav>
