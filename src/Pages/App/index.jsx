@@ -9,9 +9,9 @@ import {
     Signin 
 } from './../';
 
-import { Layout, Navbar } from './../../Components';
+import { CheckoutSideMenu, Layout, Navbar } from './../../Components';
 
-import { CartContextProvider } from '../../Context';
+import { useCartContext } from '../../Hook/useCartContext';
 
 import './App.css';
 
@@ -29,14 +29,17 @@ const AppRoutes = () => {
 };
 
 export function App() {
+    const { isCheckoutSideMenuOpen } = useCartContext();
+
     return (
-        <CartContextProvider>
+        <>
             <BrowserRouter>
                 <Navbar />
                 <Layout>
                     <AppRoutes />
                 </Layout>
+                {isCheckoutSideMenuOpen && <CheckoutSideMenu />}
             </BrowserRouter>
-        </CartContextProvider>
+        </>
     );
 }

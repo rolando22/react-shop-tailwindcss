@@ -3,11 +3,22 @@ import { useCartContext } from "../../Hook/useCartContext";
 import { PlusSmallIcon } from "@heroicons/react/24/solid";
 
 export function Card({ title, price, image, categoryName, description, openProductDetail }) {
-    const { setProductToShow, addToCart } = useCartContext();
+    const { 
+            setProductToShow, 
+            closeProductDetail, 
+            addToCart, 
+            openCheckoutSideMenu, 
+            closeCheckoutSideMenu 
+    } = useCartContext();
     
-    const handleOnClickAddToCart = () => addToCart({ title, price, image, categoryName, description });
+    const handleOnClickAddToCart = () => { 
+        addToCart({ title, price, image, categoryName, description });
+        closeProductDetail();
+        openCheckoutSideMenu();
+    };
     const handleOneClickOpenDetail = () => {
         setProductToShow({ title, price, image, description });
+        closeCheckoutSideMenu();
         openProductDetail();
     }
 
