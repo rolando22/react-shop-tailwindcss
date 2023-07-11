@@ -22,10 +22,11 @@ export function Home() {
 
     return (
         <>
-            <section className='grid grid-cols-4 gap-4 w-full max-w-screen-lg'>
+            <section className='grid lg:grid-cols-4 sm:grid-cols-2 justify-items-center gap-4 w-full max-w-screen-lg'>
                 {products.map(product => 
                     <Card 
                         key={product.id}
+                        id={product.id}
                         title={product.title}
                         price={product.price}
                         image={product.images[0]}
