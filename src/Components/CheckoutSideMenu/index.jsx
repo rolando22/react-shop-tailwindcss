@@ -5,9 +5,10 @@ import { useCartContext } from '../../Hook/useCartContext';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 export function CheckoutSideMenu() {
-    const { cart, totalPrice, closeCheckoutSideMenu } = useCartContext();
+    const { cart, totalPrice, closeCheckoutSideMenu, addToOrders } = useCartContext();
 
     const handleOnClickCloseSideMenu = () => closeCheckoutSideMenu();
+    const handlerOnClickAddToOrders = () => addToOrders();
 
     return (
         <aside className='flex flex-col fixed w-[360px] h-[calc(100vh-68px)] top-[68px] right-0 border border-black rounded-lg bg-white'>
@@ -20,7 +21,7 @@ export function CheckoutSideMenu() {
                     <XMarkIcon className='h-6 w-6 text-black' />
                 </button>
             </section>
-            <section className='flex flex-col gap-3 p-6 overflow-y-scroll'>
+            <section className='flex flex-col gap-3 p-6 overflow-y-scroll flex-1'>
                 {cart.map(item => 
                     <OrderCard 
                         key={item.id}
@@ -32,11 +33,17 @@ export function CheckoutSideMenu() {
                     />
                 )}
             </section>
-            <section className='p-6'>
+            <section className='flex flex-col gap-3 p-6'>
                 <p className='flex justify-between items-center'>
                     <span className='font-light'>Total:</span>
                     <span className='text-lg font-bold'>${totalPrice}</span>
                 </p>
+                <button 
+                    className='w-full bg-green-500 py-3 rounded-lg'
+                    onClick={handlerOnClickAddToOrders}
+                >
+                    Checkout
+                </button>
             </section>
         </aside>
     );
