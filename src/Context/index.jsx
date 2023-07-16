@@ -39,7 +39,7 @@ export function CartContextProvider({ children }) {
     const addToOrders = () => {
         const newOrder = {
             date: getDate(),
-            product: cart,
+            products: cart,
             totalProducts: cartQuantity,
             totalPrice: totalPrice,
         };

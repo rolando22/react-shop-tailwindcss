@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { OrderCard } from '../';
 
 import { useCartContext } from '../../Hook/useCartContext';
@@ -5,10 +7,14 @@ import { useCartContext } from '../../Hook/useCartContext';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 export function CheckoutSideMenu() {
-    const { cart, totalPrice, closeCheckoutSideMenu, addToOrders } = useCartContext();
+    const { cart, totalPrice, closeCheckoutSideMenu, addToOrders, removeFromCart } = useCartContext();
 
     const handleOnClickCloseSideMenu = () => closeCheckoutSideMenu();
-    const handlerOnClickAddToOrders = () => addToOrders();
+    const handlerOnClickAddToOrders = () => { 
+        addToOrders();
+        closeCheckoutSideMenu();
+    };
+    const handlerOnClickRemoveFromCart = (id) => () => removeFromCart(id);
 
     return (
         <aside className='flex flex-col fixed w-[360px] h-[calc(100vh-68px)] top-[68px] right-0 border border-black rounded-lg bg-white'>
@@ -30,6 +36,7 @@ export function CheckoutSideMenu() {
                         image={item.image}
                         price={item.price}
                         quantity={item.quantity}
+                        onRemoveFromCart={handlerOnClickRemoveFromCart}
                     />
                 )}
             </section>
@@ -38,12 +45,14 @@ export function CheckoutSideMenu() {
                     <span className='font-light'>Total:</span>
                     <span className='text-lg font-bold'>${totalPrice}</span>
                 </p>
-                <button 
-                    className='w-full bg-green-500 py-3 rounded-lg'
-                    onClick={handlerOnClickAddToOrders}
-                >
-                    Checkout
-                </button>
+                <Link to='/my-order/last'>
+                    <button 
+                        className='w-full bg-green-500 py-3 rounded-lg'
+                        onClick={handlerOnClickAddToOrders}
+                    >
+                        Checkout
+                    </button>
+                </Link>
             </section>
         </aside>
     );
