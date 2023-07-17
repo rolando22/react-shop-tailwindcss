@@ -10,4 +10,4 @@ Este repositorio contiene el código de un aplicación de una tienda online, una
 - Uso de useContext para tener acceso al estado del carrito, los filtros y los productos, en cualquier parte que se requiera en un conjunto de componentes que estén dentro del proveedor de dicho contexto evitando prop drilling.
 - Uso de customHooks para el uso del contexto
 
-Puedes ver el demo aquí: ().
+Puedes ver el demo aquí: (https://rolando22.github.io/react-shop-tailwindcss/).
