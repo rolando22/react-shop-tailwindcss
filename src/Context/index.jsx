@@ -38,6 +38,7 @@ export function CartContextProvider({ children }) {
 
     const addToOrders = () => {
         const newOrder = {
+            id: crypto.randomUUID(),
             date: getDate(),
             products: cart,
             totalProducts: cartQuantity,

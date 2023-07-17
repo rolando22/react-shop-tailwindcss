@@ -1,15 +1,20 @@
+import { useParams } from 'react-router-dom';
+
 import { OrderCard } from '../../Components';
 
 import { useCartContext } from '../../Hook/useCartContext';
 
 export function MyOrder() {
+    const { id } = useParams();
     const { orders } = useCartContext();
+
+    const orderProducts = id ? orders.find(order => order.id === id).products : orders.at(-1)?.products;
 
     return (
         <>
-            <div>MyOrder</div>
+            <h1 className='font-medium text-xl'>My Order</h1>
             <section className='flex flex-col gap-3 p-6'>
-                {orders.at(-1)?.products?.map(item => 
+                {orderProducts?.map(item => 
                     <OrderCard 
                         key={item.id}
                         id={item.id}
