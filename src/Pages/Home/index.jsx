@@ -1,27 +1,29 @@
-import { useEffect, useState } from 'react';
-
 import { Card, ProductDetail } from './../../Components';
 
 import { useCartContext } from '../../Hook/useCartContext';
 
 export function Home() {
-    const [products, setProducts] = useState([]);
-    const { isProductDetailOpen, openProductDetail } = useCartContext();
+    const { 
+        isProductDetailOpen, 
+        openProductDetail, 
+        products, 
+        filters,
+        setterFilters, 
+    } = useCartContext();
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await fetch('https://api.escuelajs.co/api/v1/products');
-                const data = await response.json();
-                setProducts(data);
-            } catch (error) {
-                console.log(error);
-            }
-        })();
-    }, []);
+    const handlerOnChangeFilterTitle = (event) => setterFilters({ title: event.target.value });
 
     return (
         <>
+            <h1 className='font-medium text-xl'>Shopi</h1>
+            <input 
+                className='rounded-lg border border-black w-80 p-3 focus:border-gray-700'
+                type='text' 
+                placeholder='Search a product'
+                value={filters.title}
+                onChange={handlerOnChangeFilterTitle}
+            />
+            {products.length === 0 && <p className='text-center'>Sorry, not found products...</p>}
             <section className='grid lg:grid-cols-4 sm:grid-cols-2 justify-items-center gap-4 w-full max-w-screen-lg'>
                 {products.map(product => 
                     <Card 

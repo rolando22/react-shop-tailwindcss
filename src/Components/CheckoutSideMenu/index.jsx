@@ -7,12 +7,20 @@ import { useCartContext } from '../../Hook/useCartContext';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 export function CheckoutSideMenu() {
-    const { cart, totalPrice, closeCheckoutSideMenu, addToOrders, removeFromCart } = useCartContext();
+    const { 
+        cart, 
+        totalPrice, 
+        closeCheckoutSideMenu, 
+        addToOrders, 
+        removeFromCart,
+        setterFilters,
+    } = useCartContext();
 
     const handleOnClickCloseSideMenu = () => closeCheckoutSideMenu();
     const handlerOnClickAddToOrders = () => { 
         addToOrders();
         closeCheckoutSideMenu();
+        setterFilters({ title: '' })
     };
     const handlerOnClickRemoveFromCart = (id) => () => removeFromCart(id);
 

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import { getDate } from "../utils/formatterDate";
 
@@ -10,6 +10,8 @@ export function CartContextProvider({ children }) {
     const [cart, setCart] = useState([]);
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
     const [orders, setOrders] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [filters, setFilters] = useState({ title: '', category: 'All' });
 
     const openProductDetail = () =>  setIsProductDetailOpen(true);
     const closeProductDetail = () =>  setIsProductDetailOpen(false);
@@ -48,7 +50,25 @@ export function CartContextProvider({ children }) {
         setOrders(newOrders);
         setCart([]);
     };
-    
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch('https://api.escuelajs.co/api/v1/products');
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
+
+    const setterFilters = (newFilter) => setFilters(prevState => ({ ...prevState, ...newFilter }));
+
+    const filteredProducts = products.filter(product => 
+        product.title.toLocaleLowerCase().includes(filters.title.toLocaleLowerCase()) 
+        && (filters.category === 'All' || product.category.name === filters.category));
+
     return (
         <CartContext.Provider value={{
             isProductDetailOpen,
@@ -66,6 +86,9 @@ export function CartContextProvider({ children }) {
             closeCheckoutSideMenu,
             orders,
             addToOrders,
+            products: filteredProducts,
+            filters,
+            setterFilters,
         }}>
             {children}
         </CartContext.Provider>
