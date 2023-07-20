@@ -1,36 +1,41 @@
 import { NavLink } from "react-router-dom";
 
 import { useCartContext } from "../../Hook/useCartContext";
+import { useUserContext } from "../../Hook/useUserContext";
 
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 
 const menu1 = [
-    { id: 0, to: '/', text: 'Shopi', class: 'font-semibold text-lg' }, 
-    { id: 1, to: '/', text: 'All', class: '' }, 
-    { id: 2, to: '/clothes', text: 'Clothes', class: '' }, 
-    { id: 3, to: '/shoes', text: 'Shoes', class: '' }, 
-    { id: 4, to: '/electronics', text: 'Electronics', class: '' }, 
-    { id: 5, to: '/furnitures', text: 'Furniture', class: '' }, 
-    { id: 6, to: '/toys', text: 'Toys', class: '' }, 
-    { id: 7, to: '/others', text: 'Others', class: '' }, 
+    { id: 0, to: '/react-shop-tailwindcss/', text: 'Shopi', class: 'font-semibold text-lg' }, 
+    { id: 1, to: '/react-shop-tailwindcss/', text: 'All', class: '' }, 
+    { id: 2, to: '/react-shop-tailwindcss/clothes', text: 'Clothes', class: '' }, 
+    { id: 3, to: '/react-shop-tailwindcss/shoes', text: 'Shoes', class: '' }, 
+    { id: 4, to: '/react-shop-tailwindcss/electronics', text: 'Electronics', class: '' }, 
+    { id: 5, to: '/react-shop-tailwindcss/furnitures', text: 'Furniture', class: '' }, 
+    { id: 6, to: '/react-shop-tailwindcss/toys', text: 'Toys', class: '' }, 
+    { id: 7, to: '/react-shop-tailwindcss/others', text: 'Others', class: '' }, 
 ];
 
 const menu2 = [
-    { id: 0, to: '', text: 'rolando@platzi.com', class: 'text-black/60' }, 
-    { id: 1, to: '/my-orders', text: 'My Orders', class: '' }, 
-    { id: 2, to: '/my-account', text: 'My Account', class: '' }, 
-    { id: 3, to: '/signin', text: 'Sign In', class: '' }, 
+    { id: 0, to: '', text: 'rolando@platzi.com', class: 'text-black/60', session: true }, 
+    { id: 1, to: '/react-shop-tailwindcss/my-orders', text: 'My Orders', class: '', session: true }, 
+    { id: 2, to: '/react-shop-tailwindcss/my-account', text: 'My Account', class: '', session: true }, 
+    { id: 3, to: '/react-shop-tailwindcss/sign-in', text: 'Sign In', class: '', session: false }, 
+    { id: 4, to: '/react-shop-tailwindcss/sign-out', text: 'Sign Out', class: '', session: true }, 
 ]
 
 export function Navbar() {
     const { cartQuantity, setterFilters } = useCartContext();
+    const { isSignOut, signOut } = useUserContext();
 
     const activeStyle = 'underline underline-offset-4';
 
     const active = ({ isActive }) => isActive ? activeStyle : '';
 
-    const handledOnClickFilterCategory = (category) => () => setterFilters({ category });
+    const handledOnClickFilterCategory = (category) => () => 
+        setterFilters({ category: category === 'Shopi' ? 'All' : category });
     const handledOnClickClear = () => setterFilters({ title: '' });
+    const handledOnClickSignOut = () => signOut();
 
     return (
         <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
@@ -48,25 +53,27 @@ export function Navbar() {
             </ul>
             <ul className='flex items-center gap-3'>
                 {menu2.map(item => 
-                    item.to !== ''
-                        ? <li 
-                            key={item.id}
-                            onClick={handledOnClickClear}
-                        >
-                            <NavLink 
-                                to={item.to} 
-                                className={item.class || active}
+                    isSignOut === item.session && (
+                        item.to !== ''
+                            ? <li 
+                                key={item.id}
+                                onClick={item.text === 'Sign Out' ? handledOnClickSignOut : handledOnClickClear}
+                            >
+                                <NavLink 
+                                    to={item.to} 
+                                    className={item.class || active}
+                                >
+                                    {item.text}
+                                </NavLink>
+                            </li>
+                            : <li 
+                                key={item.id} 
+                                className={item.class}
+                                onClick={handledOnClickClear}
                             >
                                 {item.text}
-                            </NavLink>
-                        </li>
-                        : <li 
-                            key={item.id} 
-                            className={item.class}
-                            onClick={handledOnClickClear}
-                        >
-                            {item.text}
-                        </li>
+                            </li>
+                        )
                 )}
                 <li className='flex items-center gap-0.5'>
                     <ShoppingCartIcon className='h-5 w-5 text-black'/> 

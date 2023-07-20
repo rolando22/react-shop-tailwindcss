@@ -17,15 +17,15 @@ import './App.css';
 
 const AppRoutes = () => {
     const routes = useRoutes([
-        { path: '/', element: <Home /> },
-        { path: '/:category', element: <Home /> },
-        { path: '/my-account', element: <MyAccount /> },
-        { path: '/my-order', element: <MyOrder /> },
-        { path: '/my-order/last', element: <MyOrder /> },
-        { path: '/my-order/:id', element: <MyOrder /> },
-        { path: '/my-orders', element: <MyOrders /> },
-        { path: '/signin', element: <Signin /> },
-        { path: '/*', element: <NotFound /> },
+        { path: '/react-shop-tailwindcss/', element: <Home /> },
+        { path: '/react-shop-tailwindcss/:category', element: <Home /> },
+        { path: '/react-shop-tailwindcss/my-account', element: <MyAccount /> },
+        { path: '/react-shop-tailwindcss/my-order', element: <MyOrder /> },
+        { path: '/react-shop-tailwindcss/my-order/last', element: <MyOrder /> },
+        { path: '/react-shop-tailwindcss/my-order/:id', element: <MyOrder /> },
+        { path: '/react-shop-tailwindcss/my-orders', element: <MyOrders /> },
+        { path: '/react-shop-tailwindcss/sign-in', element: <Signin /> },
+        { path: '/react-shop-tailwindcss/*', element: <NotFound /> },
     ]);
 
     return routes;
