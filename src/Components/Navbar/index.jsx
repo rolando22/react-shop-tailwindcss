@@ -6,22 +6,22 @@ import { useUserContext } from "../../Hook/useUserContext";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 
 const menu1 = [
-    { id: 0, to: '/react-shop-tailwindcss/', text: 'Shopi', class: 'font-semibold text-lg' }, 
-    { id: 1, to: '/react-shop-tailwindcss/', text: 'All', class: '' }, 
-    { id: 2, to: '/react-shop-tailwindcss/clothes', text: 'Clothes', class: '' }, 
-    { id: 3, to: '/react-shop-tailwindcss/shoes', text: 'Shoes', class: '' }, 
-    { id: 4, to: '/react-shop-tailwindcss/electronics', text: 'Electronics', class: '' }, 
-    { id: 5, to: '/react-shop-tailwindcss/furnitures', text: 'Furniture', class: '' }, 
-    { id: 6, to: '/react-shop-tailwindcss/toys', text: 'Toys', class: '' }, 
-    { id: 7, to: '/react-shop-tailwindcss/others', text: 'Others', class: '' }, 
+    { id: 0, to: '/', text: 'Shopi', class: 'font-semibold text-lg' }, 
+    { id: 1, to: '/', text: 'All', class: '' }, 
+    { id: 2, to: '/clothes', text: 'Clothes', class: '' }, 
+    { id: 3, to: '/shoes', text: 'Shoes', class: '' }, 
+    { id: 4, to: '/electronics', text: 'Electronics', class: '' }, 
+    { id: 5, to: '/furnitures', text: 'Furniture', class: '' }, 
+    { id: 6, to: '/toys', text: 'Toys', class: '' }, 
+    { id: 7, to: '/others', text: 'Others', class: '' }, 
 ];
 
 const menu2 = [
     { id: 0, to: '', text: 'rolando@platzi.com', class: 'text-black/60', session: false }, 
-    { id: 1, to: '/react-shop-tailwindcss/my-orders', text: 'My Orders', class: '', session: false }, 
-    { id: 2, to: '/react-shop-tailwindcss/my-account', text: 'My Account', class: '', session: false }, 
-    { id: 3, to: '/react-shop-tailwindcss/sign-in', text: 'Sign In', class: '', session: true }, 
-    { id: 4, to: '/react-shop-tailwindcss/sign-out', text: 'Sign Out', class: '', session: false }, 
+    { id: 1, to: '/my-orders', text: 'My Orders', class: '', session: false }, 
+    { id: 2, to: '/my-account', text: 'My Account', class: '', session: false }, 
+    { id: 3, to: '/sign-in', text: 'Sign In', class: '', session: true }, 
+    { id: 4, to: '/sign-out', text: 'Sign Out', class: '', session: false }, 
 ]
 
 export function Navbar() {
