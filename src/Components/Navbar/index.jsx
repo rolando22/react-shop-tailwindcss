@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useCartContext } from "../../Hook/useCartContext";
 import { useUserContext } from "../../Hook/useUserContext";
 
-import { ShoppingCartIcon } from "@heroicons/react/24/solid";
+import { ShoppingCart } from "../ShoppingCart";
 
 const menu1 = [
     { id: 0, to: '/', text: 'Shopi', class: 'font-semibold text-lg' }, 
@@ -25,7 +25,7 @@ const menu2 = [
 ]
 
 export function Navbar() {
-    const { cartQuantity, setterFilters } = useCartContext();
+    const { setterFilters } = useCartContext();
     const { isSignOut, signOut } = useUserContext();
 
     const activeStyle = 'underline underline-offset-4';
@@ -75,9 +75,8 @@ export function Navbar() {
                             </li>
                         )
                 )}
-                <li className='flex items-center gap-0.5'>
-                    <ShoppingCartIcon className='h-5 w-5 text-black'/> 
-                    <span>{cartQuantity}</span>
+                <li className='flex items-center'>
+                    <ShoppingCart />
                 </li>
             </ul>
         </nav>
