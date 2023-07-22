@@ -33,12 +33,14 @@ export function Signin() {
                     <div className='text-center'>
                         <a className='font-light text-xs underline underline-offset-4' href='/'>Forgot my Password</a>
                     </div>
-                    <button 
-                        className='border border-black disabled:text-black/40 disabled:border-black/40 rounded-lg py-3 w-full'
-                        disabled={hasUserAnAccount}
-                    >
-                        Sign up
-                    </button>
+                    <Link to='/react-shop-tailwindcss/create-account'>
+                        <button 
+                            className='border border-black disabled:text-black/40 disabled:border-black/40 rounded-lg py-3 w-full'
+                            disabled={hasUserAnAccount}
+                        >
+                            Sign up
+                        </button>
+                    </Link>
                 </div>
             </section>
         </>

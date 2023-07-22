@@ -17,11 +17,19 @@ export function UserContextProvider({ children }) {
         setIsSignOut(true);
     };
 
+    const signIn = (account) => {
+        localStorage.setItem('account', JSON.stringify(account));
+        setAccount(account);
+        localStorage.setItem('sign-out', JSON.stringify(false));
+        setIsSignOut(false);
+    };
+
     return (
         <UserContext.Provider value={{
             account,
             isSignOut,
             signOut,
+            signIn,
         }}>
             {children}
         </UserContext.Provider>

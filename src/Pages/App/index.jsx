@@ -9,7 +9,7 @@ import {
     Signin 
 } from './../';
 
-import { CheckoutSideMenu, Layout, Navbar } from './../../Components';
+import { CheckoutSideMenu, CreateAccount, Layout, Navbar } from './../../Components';
 
 import { useCartContext } from '../../Hook/useCartContext';
 
@@ -25,6 +25,7 @@ const AppRoutes = () => {
         { path: '/react-shop-tailwindcss/my-order/:id', element: <MyOrder /> },
         { path: '/react-shop-tailwindcss/my-orders', element: <MyOrders /> },
         { path: '/react-shop-tailwindcss/sign-in', element: <Signin /> },
+        { path: '/react-shop-tailwindcss/create-account', element: <CreateAccount /> },
         { path: '/react-shop-tailwindcss/*', element: <NotFound /> },
     ]);
 

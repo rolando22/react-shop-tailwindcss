@@ -17,11 +17,11 @@ const menu1 = [
 ];
 
 const menu2 = [
-    { id: 0, to: '', text: 'rolando@platzi.com', class: 'text-black/60', session: true }, 
-    { id: 1, to: '/react-shop-tailwindcss/my-orders', text: 'My Orders', class: '', session: true }, 
-    { id: 2, to: '/react-shop-tailwindcss/my-account', text: 'My Account', class: '', session: true }, 
-    { id: 3, to: '/react-shop-tailwindcss/sign-in', text: 'Sign In', class: '', session: false }, 
-    { id: 4, to: '/react-shop-tailwindcss/sign-out', text: 'Sign Out', class: '', session: true }, 
+    { id: 0, to: '', text: 'rolando@platzi.com', class: 'text-black/60', session: false }, 
+    { id: 1, to: '/react-shop-tailwindcss/my-orders', text: 'My Orders', class: '', session: false }, 
+    { id: 2, to: '/react-shop-tailwindcss/my-account', text: 'My Account', class: '', session: false }, 
+    { id: 3, to: '/react-shop-tailwindcss/sign-in', text: 'Sign In', class: '', session: true }, 
+    { id: 4, to: '/react-shop-tailwindcss/sign-out', text: 'Sign Out', class: '', session: false }, 
 ]
 
 export function Navbar() {
