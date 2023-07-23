@@ -17,16 +17,16 @@ const menu1 = [
 ];
 
 const menu2 = [
-    { id: 0, to: '', text: 'rolando@platzi.com', class: 'text-black/60', session: false }, 
-    { id: 1, to: '/my-orders', text: 'My Orders', class: '', session: false }, 
-    { id: 2, to: '/my-account', text: 'My Account', class: '', session: false }, 
-    { id: 3, to: '/sign-in', text: 'Sign In', class: '', session: true }, 
-    { id: 4, to: '/sign-out', text: 'Sign Out', class: '', session: false }, 
+    { id: 0, to: '', text: 'email', class: 'text-black/60', session: true }, 
+    { id: 1, to: '/my-orders', text: 'My Orders', class: '', session: true }, 
+    { id: 2, to: '/my-account', text: 'My Account', class: '', session: true }, 
+    { id: 3, to: '/sign-in', text: 'Sign In', class: '', session: false }, 
+    { id: 4, to: '/sign-out', text: 'Sign Out', class: '', session: true }, 
 ]
 
 export function Navbar() {
     const { setterFilters } = useCartContext();
-    const { isSignOut, signOut } = useUserContext();
+    const { account, isSignOut, signOut } = useUserContext();
 
     const activeStyle = 'underline underline-offset-4';
 
@@ -53,7 +53,7 @@ export function Navbar() {
             </ul>
             <ul className='flex items-center gap-3'>
                 {menu2.map(item => 
-                    isSignOut === item.session && (
+                    !isSignOut === item.session && (
                         item.to !== ''
                             ? <li 
                                 key={item.id}
@@ -71,7 +71,7 @@ export function Navbar() {
                                 className={item.class}
                                 onClick={handledOnClickClear}
                             >
-                                {item.text}
+                                {item.text === 'email' ? account?.email : item.text}
                             </li>
                         )
                 )}

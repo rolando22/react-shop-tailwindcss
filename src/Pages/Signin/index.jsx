@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../../Hook/useUserContext";
 
 export function Signin() {
-    const { account } = useUserContext();
+    const { account, signIn } = useUserContext();
 
     const hasUserAnAccount = Object.keys(account).length !== 0;
+
+    const handleOnClickSignIn = () => signIn();
 
     return (
         <>
@@ -25,7 +27,8 @@ export function Signin() {
                     <Link to='/'>
                         <button 
                             className='bg-black disabled:bg-black/40 text-white w-full rounded-lg py-3 mb-2'
-                            disabled={!hasUserAnAccount}
+                            disabled={!hasUserAnAccount} 
+                            onClick={handleOnClickSignIn}
                         >
                             Log in
                         </button>

@@ -1,6 +1,6 @@
 export { Card } from './Card';
 export { CheckoutSideMenu } from './CheckoutSideMenu';
-export { CreateAccount } from './CreateAccount';
+export { CreateAccount } from '../Pages/CreateAccount';
 export { Layout } from './Layout';
 export { Navbar } from './Navbar';
 export { OrderCard } from './OrderCard';

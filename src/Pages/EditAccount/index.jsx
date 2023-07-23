@@ -2,20 +2,20 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../Hook/useUserContext";
 
-export function CreateAccount() {
-    const formCreateAccount = useRef(null);
-    const { signIn } = useUserContext();
+export function EditAccount() {
+    const formEditAccount = useRef(null);
+    const { account, saveAccount } = useUserContext();
 
-    const handleOnClickCreateAccount = () => {
-        const formDataCreateAccount = new FormData(formCreateAccount.current);
-        const data = Object.fromEntries(formDataCreateAccount);
-        signIn(data);
+    const handleOnClickEditAccount = () => {
+        const formDataEditAccount = new FormData(formEditAccount.current);
+        const data = Object.fromEntries(formDataEditAccount);
+        saveAccount(data);
     };
 
     return (
         <>
-            <h1 className='font-medium text-xl'>Welcome</h1>
-            <form className='flex flex-col gap-4 w-80' ref={formCreateAccount}>
+            <h1 className='font-medium text-xl'>Edit Account</h1>
+            <form className='flex flex-col gap-4 w-80' ref={formEditAccount}>
                 <div className='flex flex-col gap-1'>
                     <label htmlFor='name' className='font-light text-sm'>Your name:</label>
                     <input 
@@ -23,6 +23,7 @@ export function CreateAccount() {
                         type='text' 
                         id='name' 
                         name='name' 
+                        defaultValue={account?.name}
                         placeholder='Peter' 
                     />
                 </div>
@@ -33,6 +34,7 @@ export function CreateAccount() {
                         type='text' 
                         id='email' 
                         name='email' 
+                        defaultValue={account?.email}
                         placeholder='peter@platzi.com' 
                     />
                 </div>
@@ -43,14 +45,15 @@ export function CreateAccount() {
                         type='text' 
                         id='password' 
                         name='password' 
+                        defaultValue={account?.password}
                     />
                 </div>
                 <Link to='/react-shop-tailwindcss/'>
                     <button 
                         className='bg-black text-white w-full rounded-lg py-3'
-                        onClick={handleOnClickCreateAccount}
+                        onClick={handleOnClickEditAccount}
                     >
-                        Create
+                        Save
                     </button>
                 </Link>
             </form>

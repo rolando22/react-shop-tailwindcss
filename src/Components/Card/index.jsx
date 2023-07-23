@@ -41,7 +41,7 @@ export function Card({ id, title, price, image, categoryName, description, openP
                     <PlusSmallIcon className='h-4 w-4 text-black' />
                 </button>
             </figure>
-            <p className='flex justify-between'>
+            <p className='flex justify-between items-center'>
                 <span className='text-sm font-light'>{title}</span>
                 <span className='text-lg font-medium'>${price}</span>
             </p>

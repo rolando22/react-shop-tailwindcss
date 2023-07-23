@@ -1,6 +1,8 @@
 import { Navigate, useRoutes } from "react-router-dom";
 
 import { 
+    CreateAccount,
+    EditAccount,
     Home, 
     MyAccount, 
     MyOrder, 
@@ -9,7 +11,6 @@ import {
     Signin 
 } from './../Pages';
 
-import { CreateAccount } from './../Components';
 import { useUserContext } from "../Hook/useUserContext";
 
 export const AppRoutes = () => {
@@ -27,6 +28,7 @@ export const AppRoutes = () => {
         { path: '/my-orders', element: hasUserAnAccount && !isSignOut ? <MyOrders /> : <Navigate replace to={'/sign-in'} /> },
         { path: '/sign-in', element: <Signin /> },
         { path: '/create-account', element: <CreateAccount /> },
+        { path: '/edit-account', element: <EditAccount /> },
         { path: '/*', element: <NotFound /> },
     ]);
 
